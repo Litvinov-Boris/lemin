@@ -1,0 +1,25 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-g",
+                "./src/main.c",
+                "./src/print.c",
+                "./src/read_and_save.c",
+                "./src/initial.c",
+                "./libft/libft.a",
+                "./src/tools.c",
+                "./src/is_valid.c",
+                "./src/read_map.c",
+                "-I./inc",
+                "-I./libft"
+            ]
+        }
+    ]
+}
