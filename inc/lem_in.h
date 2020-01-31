@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:56:58 by svivienn          #+#    #+#             */
-/*   Updated: 2020/01/31 05:55:47 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/01/31 10:07:54 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ struct s_lemin
 {
 	t_lst	*input;
 	int		ants;
+	t_graph	*graph;
 };
+
+
 
 
 int	fd;
@@ -51,11 +54,11 @@ t_lemin	*init_lemin();
 
 void	error();
 
-int			read_n_save(t_lemin *data);
+int		read_n_save(t_lemin *data);
 
 void	print_input(t_lemin *data);
 
-int	is_valid(char *str);
+int		is_valid(char *str);
 
 void	read_map(t_lemin *data);
 #endif
