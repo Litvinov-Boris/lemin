@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:22:22 by svivienn          #+#    #+#             */
-/*   Updated: 2020/01/31 04:24:23 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/17 10:36:23 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@ void	print_input(t_lemin *data)
 	{
 		write (1, work->content, work->content_size);
 		write (1, "\n", 1);
+		work = work->next;
+	}
+}
+
+void	print_rooms(t_lemin *data)
+{
+	t_list *work;
+
+	work = data->rooms->head;
+	while (work != NULL)
+	{
+		printf("%s\n", ((t_room*)(work->content))->name);
 		work = work->next;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:57:57 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/17 04:55:42 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/17 10:37:25 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	main(void)
 	data = init_lemin();
 	fd = open("./test1", O_RDONLY);
 	read_map(data);
-	printf("%i", data->ants);
+	printf("%i\n", data->ants);
+	print_rooms(data);
 	close(fd);
 	return (0);
 }

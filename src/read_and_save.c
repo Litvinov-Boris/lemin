@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   read_and_save.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:10:23 by svivienn          #+#    #+#             */
-/*   Updated: 2020/01/31 04:27:10 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/17 10:31:07 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static void	lstadd_tail(t_lst *lst, t_list *list)
+void	lstadd_tail(t_lst *lst, t_list *list)
 {
 	if (lst->head == NULL)
 	{

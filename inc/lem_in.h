@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:56:58 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/17 04:55:09 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/17 11:31:41 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ struct		s_lemin
 {
 	t_lst	*input;
 	int		ants;
+	t_lst	*rooms;
+	char	st_en_st;
 };
 
 struct		s_room
@@ -55,14 +57,18 @@ struct		s_room
 int	fd;
 
 t_lemin	*init_lemin();
+t_room	*init_room(char *str);
 
 void	error();
 
 int		read_n_save(t_lemin *data);
+void	lstadd_tail(t_lst *lst, t_list *list);
 
 void	print_input(t_lemin *data);
+void	print_rooms(t_lemin *data);
 
 int		is_valid(char *str);
 
 void	read_map(t_lemin *data);
+void	room_parser(t_lemin *data, int *mode, int str_t);
 #endif
