@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:56:58 by svivienn          #+#    #+#             */
-/*   Updated: 2020/01/31 10:07:54 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/17 04:55:09 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 
 typedef struct	s_lst	t_lst;
 typedef struct	s_lemin	t_lemin;
+typedef struct	s_room	t_room;
 
 
 struct		s_lst
@@ -38,13 +39,16 @@ struct		s_lst
 	t_list	*tail;
 };
 
-struct s_lemin
+struct		s_lemin
 {
 	t_lst	*input;
 	int		ants;
-	t_graph	*graph;
 };
 
+struct		s_room
+{
+	char	*name;
+};
 
 
 
