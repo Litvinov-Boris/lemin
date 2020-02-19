@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:57:57 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/19 04:42:40 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/19 06:22:49 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main(void)
 	data = init_lemin();
 	fd = open("./test1", O_RDONLY);
 	read_map(data);
-	print_input(data);
-	printf("\n%i\n", data->ants);
+	/*print_input(data);
+	printf("\n%i\n", data->ants);*/
 	print_rooms(data);
 	close(fd);
 	exit(0);

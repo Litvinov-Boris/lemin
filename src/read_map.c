@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 05:26:46 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/19 04:52:40 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/19 06:58:54 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,15 @@ static void	start_and_parser(t_lemin *data, int str_t)
 		data->st_en_st->tail = data->rooms->tail;
 }
 
-static void	tube_parser()
+static void	tube_parser(/*int str_t, t_lemin *data*/)
 {
+	/*char	**split;
+	t_room	*room1;
+	t_room	*room2;
+
+	if (str_t != TUBE)
+		error();
+	split = ft_strsplit(data->input->tail, '-');*/
 }
 
 void	room_parser(t_lemin *data, int *mode, int str_t)

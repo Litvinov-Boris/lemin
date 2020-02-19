@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:56:58 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/19 04:51:42 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/19 06:38:23 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,59 @@
 # define TUBE	3
 # define START	4
 # define END	5
+# define IN		1
+# define OUT	0
 
-typedef struct	s_lst	t_lst;
-typedef struct	s_lemin	t_lemin;
-typedef struct	s_room	t_room;
+typedef struct	s_lst		t_lst;
+typedef struct	s_lemin		t_lemin;
+typedef struct	s_room		t_room;
+typedef struct	s_subroom	t_subroom;
+typedef struct	s_tube		t_tube;
 
-
-struct		s_lst
+struct s_tube
 {
-	t_list	*head;
-	t_list	*tail;
+	t_subroom	*link;
+	int			weight;
+	int			turn;
 };
 
-struct		s_lemin
+struct			s_lst
 {
-	t_lst	*input;
-	int		ants;
-	t_lst	*rooms;
-	t_lst	*st_en_st;
+	t_list		*head;
+	t_list		*tail;
 };
 
-struct		s_room
+struct			s_lemin
 {
-	char	*name;
-	int		x;
-	int		y;
+	t_lst		*input;
+	int			ants;
+	t_lst		*rooms;
+	t_lst		*st_en_st;
 };
+
+struct			s_room
+{
+	char		*name;
+	int			x;
+	int			y;
+	t_subroom	*in;
+	t_subroom	*out;
+	t_room		*p_o;
+	t_room		*p_n;
+	t_room		*c_o;
+	t_room		*c_n;
+};
+
+struct			s_subroom
+{
+	char		type;
+	t_lst		*links;
+	char		visited;
+	t_room		*master;
+	int			distance;
+	t_subroom	*parent;
+};
+
 
 
 
@@ -60,9 +87,12 @@ int	fd;
 
 t_lemin	*init_lemin();
 t_room	*init_room(char ***str);
+t_subroom	*init_subroom(char type, t_room *master);
+t_tube		*init_tube(t_subroom *link, int weight);
 
 void	error();
 int		room_replay(t_list *list, t_room *room);
+t_room	*search_room(t_lemin *data, char *str);
 
 int		read_n_save(t_lemin *data);
 void	lstadd_tail(t_lst *lst, t_list *list);
