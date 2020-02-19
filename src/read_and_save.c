@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_and_save.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:10:23 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/17 10:31:07 by boris            ###   ########.fr       */
+/*   Updated: 2020/02/19 03:04:26 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	lstadd_tail(t_lst *lst, t_list *list)
 	if (lst->head == NULL)
 	{
 		lst->head = list;
-		lst->tail = list;
+		lst->tail = lst->head;
 	}
 	else
 	{
@@ -38,9 +38,10 @@ int			read_n_save(t_lemin *data)
 		error();
 	if (ret > 0)
 	{
-		newintp = ft_lstnew(str, ft_strlen(str));
+		newintp = ft_lstnew(0,0);
+		newintp->content = str;
+		newintp->content_size = ft_strlen(str);
 		lstadd_tail(data->input, newintp);
-		free(str);
 	}
 	return (ret);
 }

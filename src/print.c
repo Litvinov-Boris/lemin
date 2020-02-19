@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:22:22 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/17 10:36:23 by boris            ###   ########.fr       */
+/*   Updated: 2020/02/19 03:05:36 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,6 @@ void	print_rooms(t_lemin *data)
 		printf("%s\n", ((t_room*)(work->content))->name);
 		work = work->next;
 	}
+	printf("\n%s\n%s", ((t_room*)(data->st_en_st->head->content))->name,
+			((t_room*)(data->st_en_st->tail->content))->name);
 }

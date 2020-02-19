@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 05:26:46 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/17 10:37:56 by boris            ###   ########.fr       */
+/*   Updated: 2020/02/19 04:52:40 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,26 @@ static void	ants_parser(t_lemin *data, int *mode, int str_t)
 		*mode = ROOM;
 	}
 }
+static void	start_and_parser(t_lemin *data, int str_t)
+{
+	int str_t1;
+
+	if (!(read_n_save(data)))
+		error();
+	str_t1 = is_valid(data->input->tail->content);
+	if (str_t1 == ROOM)
+		room_parser(data, &str_t1, str_t1);
+	else
+		error();
+	if (str_t == START)
+		data->st_en_st->head = data->rooms->tail;
+	else
+		data->st_en_st->tail = data->rooms->tail;
+}
+
+static void	tube_parser()
+{
+}
 
 void	room_parser(t_lemin *data, int *mode, int str_t)
 {
@@ -30,16 +50,25 @@ void	room_parser(t_lemin *data, int *mode, int str_t)
 
 	if (str_t == ROOM)
 	{
-		if (!(work = (t_list*)malloc(sizeof(t_list))))
+		if (!(work = ft_lstnew(0, 0)))
 			error();
 		if (!(split = ft_strsplit(data->input->tail->content, ' ')))
 			error();
-		work->content = init_room(split[0]);
-		free(split[1]);
-		free(split[2]);
-		free(split);
+		work->content = init_room(&split);
+		if (room_replay((data->rooms->head), work->content))
+			error();
 		lstadd_tail(data->rooms, work);
 	}
+	else if ((str_t == START && data->st_en_st->head == NULL) ||
+		(str_t == END && data->st_en_st->tail == NULL))
+		start_and_parser(data, str_t);
+	else if (str_t == TUBE)
+	{
+		*mode = TUBE;
+		tube_parser();
+	}
+	else
+		error();
 }
 
 void	read_map(t_lemin *data)
@@ -57,6 +86,8 @@ void	read_map(t_lemin *data)
 				ants_parser(data, &mode, str_t);
 			else if (mode == ROOM)
 				room_parser(data, &mode, str_t);
+			else if (mode == TUBE)
+				tube_parser();
 		}
 	}
 }

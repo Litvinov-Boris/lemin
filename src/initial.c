@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initial.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:00:08 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/17 10:44:22 by boris            ###   ########.fr       */
+/*   Updated: 2020/02/19 04:49:37 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,22 @@ t_lemin	*init_lemin()
 	bzero(data, sizeof(t_lemin));
 	data->input = init_list();
 	data->rooms = init_list();
+	data->st_en_st = init_list();
 	return (data);
 }
 
-t_room	*init_room(char *str)
+t_room	*init_room(char ***str)
 {
 	t_room	*room;
 
 	if (!(room = (t_room*)malloc(sizeof(t_room))))
 		error();
 	ft_bzero(room, sizeof(t_room));
-	room->name = str;
+	room->name = (*str)[0];
+	room->x = ft_atoi((*str)[1]);
+	room->y = ft_atoi((*str)[2]);
+	free((*str)[1]);
+	free((*str)[2]);
+	free(*str);
 	return (room);
 }
