@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:14:29 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/19 06:38:04 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/20 05:28:24 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,22 @@ t_room	*search_room(t_lemin *data, char *str)
 	while (work != NULL)
 	{
 		if (!(ft_strcmp(((t_room*)work->content)->name, str)))
-			return (work);
+			return (work->content);
 		work = work->next;
 	}
 	return (NULL);
+}
+
+int		tube_replay(t_list *list, t_room *room)
+{
+	t_list	*work;
+
+	work = list;
+	while (work != NULL)
+	{
+		if (((t_tube*)work->content)->link == room->in)
+			return (1);
+		work = work->next;
+	}
+	return (0);
 }

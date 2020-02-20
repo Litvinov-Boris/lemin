@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:22:22 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/19 06:29:06 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/20 05:37:05 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	print_rooms(t_lemin *data)
 			printf ("%s-%i, ", ((t_tube*)work1->content)->link->master->name, ((t_tube*)work1->content)->link->type);
 			work1 = work1->next;
 		}
-		printf("\n");
+		printf("\n\n");
 		work = work->next;
 	}
 }

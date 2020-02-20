@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 05:26:46 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/19 06:58:54 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/20 05:35:22 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,29 @@ static void	start_and_parser(t_lemin *data, int str_t)
 		data->st_en_st->tail = data->rooms->tail;
 }
 
-static void	tube_parser(/*int str_t, t_lemin *data*/)
+static void	tube_parser(int str_t, t_lemin *data)
 {
-	/*char	**split;
+	char	**split;
 	t_room	*room1;
 	t_room	*room2;
+	t_list	*tube;
+	t_list	*tube2;
 
 	if (str_t != TUBE)
 		error();
-	split = ft_strsplit(data->input->tail, '-');*/
+	split = ft_strsplit(data->input->tail->content, '-');
+	if (!(room1 = search_room(data, split[0])) ||
+		!(room2 = search_room(data, split[1])) || room1 == room2)
+		error();
+	if (tube_replay(room1->out->links->head, room2) ||
+							tube_replay(room2->out->links->head, room1))
+		error();
+	if (!(tube = ft_lstnew(0,0)) || !(tube2 = ft_lstnew(0,0)))
+		error();
+	tube->content = init_tube(room2->in, 1);
+	tube2->content = init_tube(room1->in, 1);
+	lstadd_tail(room1->out->links, tube);
+	lstadd_tail(room2->out->links, tube2);
 }
 
 void	room_parser(t_lemin *data, int *mode, int str_t)
@@ -72,7 +86,7 @@ void	room_parser(t_lemin *data, int *mode, int str_t)
 	else if (str_t == TUBE)
 	{
 		*mode = TUBE;
-		tube_parser();
+		tube_parser(str_t, data);
 	}
 	else
 		error();
@@ -94,7 +108,7 @@ void	read_map(t_lemin *data)
 			else if (mode == ROOM)
 				room_parser(data, &mode, str_t);
 			else if (mode == TUBE)
-				tube_parser();
+				tube_parser(str_t, data);
 		}
 	}
 }

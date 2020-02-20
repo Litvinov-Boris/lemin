@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:56:58 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/19 06:38:23 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/20 05:28:44 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ t_tube		*init_tube(t_subroom *link, int weight);
 void	error();
 int		room_replay(t_list *list, t_room *room);
 t_room	*search_room(t_lemin *data, char *str);
+int		tube_replay(t_list *list, t_room *room);
 
 int		read_n_save(t_lemin *data);
 void	lstadd_tail(t_lst *lst, t_list *list);
