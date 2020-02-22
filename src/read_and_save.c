@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:10:23 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/19 03:04:26 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/23 01:56:41 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	lstadd_tail(t_lst *lst, t_list *list)
 	}
 }
 
-int			read_n_save(t_lemin *data)
+int		read_n_save(t_lemin *data)
 {
 	int		ret;
 	char	*str;
@@ -38,7 +38,7 @@ int			read_n_save(t_lemin *data)
 		error();
 	if (ret > 0)
 	{
-		newintp = ft_lstnew(0,0);
+		newintp = ft_lstnew(0, 0);
 		newintp->content = str;
 		newintp->content_size = ft_strlen(str);
 		lstadd_tail(data->input, newintp);
