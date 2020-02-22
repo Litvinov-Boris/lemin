@@ -6,13 +6,13 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:00:08 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/19 06:25:48 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/20 07:29:31 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-static t_lst	*init_list()
+static t_lst	*init_list(void)
 {
 	t_lst	*lst;
 
@@ -22,7 +22,7 @@ static t_lst	*init_list()
 	return (lst);
 }
 
-t_lemin	*init_lemin()
+t_lemin			*init_lemin(void)
 {
 	t_lemin	*data;
 
@@ -35,7 +35,7 @@ t_lemin	*init_lemin()
 	return (data);
 }
 
-t_room	*init_room(char ***str)
+t_room			*init_room(char ***str)
 {
 	t_room	*room;
 	t_list	*work;
@@ -48,7 +48,7 @@ t_room	*init_room(char ***str)
 	room->out = init_subroom(OUT, room);
 	room->x = ft_atoi((*str)[1]);
 	room->y = ft_atoi((*str)[2]);
-	if (!(work = ft_lstnew(0,0)))
+	if (!(work = ft_lstnew(0, 0)))
 		error();
 	work->content = init_tube(room->out, 0);
 	lstadd_tail(room->in->links, work);
@@ -58,20 +58,20 @@ t_room	*init_room(char ***str)
 	return (room);
 }
 
-t_subroom	*init_subroom(char type, t_room *master)
+t_subroom		*init_subroom(char type, t_room *master)
 {
 	t_subroom	*subroom;
 
 	if (!(subroom = (t_subroom*)malloc(sizeof(t_subroom))))
 		error();
-	ft_bzero(subroom, sizeof (t_subroom));
+	ft_bzero(subroom, sizeof(t_subroom));
 	subroom->type = type;
 	subroom->master = master;
 	subroom->links = init_list();
-	return(subroom);
+	return (subroom);
 }
 
-t_tube		*init_tube(t_subroom *link, int weight)
+t_tube			*init_tube(t_subroom *link, int weight)
 {
 	t_tube	*tube;
 

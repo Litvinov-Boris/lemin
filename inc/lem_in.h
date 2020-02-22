@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:56:58 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/20 05:28:44 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/20 07:03:28 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,29 +80,26 @@ struct			s_subroom
 	t_subroom	*parent;
 };
 
-
-
-
 int	fd;
 
-t_lemin	*init_lemin();
-t_room	*init_room(char ***str);
+t_lemin		*init_lemin();
+t_room		*init_room(char ***str);
 t_subroom	*init_subroom(char type, t_room *master);
 t_tube		*init_tube(t_subroom *link, int weight);
 
-void	error();
-int		room_replay(t_list *list, t_room *room);
-t_room	*search_room(t_lemin *data, char *str);
-int		tube_replay(t_list *list, t_room *room);
+void		error();
+int			room_replay(t_list *list, t_room *room);
+t_room		*search_room(t_lemin *data, char *str);
+int			tube_replay(t_list *list, t_room *room);
 
-int		read_n_save(t_lemin *data);
-void	lstadd_tail(t_lst *lst, t_list *list);
+int			read_n_save(t_lemin *data);
+void		lstadd_tail(t_lst *lst, t_list *list);
 
-void	print_input(t_lemin *data);
-void	print_rooms(t_lemin *data);
+void		print_input(t_lemin *data);
+void		print_rooms(t_lemin *data);
 
-int		is_valid(char *str);
+int			is_valid(char *str);
 
-void	read_map(t_lemin *data);
-void	room_parser(t_lemin *data, int *mode, int str_t);
+void		read_map(t_lemin *data);
+void		room_parser(t_lemin *data, int *mode, int str_t);
 #endif

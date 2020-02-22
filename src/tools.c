@@ -6,13 +6,13 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:14:29 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/20 05:28:24 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/20 07:32:43 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	error()
+void	error(void)
 {
 	perror("ERROR");
 	exit(1);
@@ -37,7 +37,7 @@ int		room_replay(t_list *list, t_room *room)
 t_room	*search_room(t_lemin *data, char *str)
 {
 	t_list	*work;
-	
+
 	work = data->rooms->head;
 	while (work != NULL)
 	{
