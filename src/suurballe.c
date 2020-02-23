@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 05:26:08 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/23 10:53:16 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/23 11:04:44 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static void	search_tube(t_subroom *data, t_list **search, t_list **presearch)
 	}
 }
 
-static void	tube_turn(t_lemin *data,t_subroom *room)
+static void	tube_turn(t_lemin *data, t_subroom *room)
 {
 	t_list	*search;
 	t_list	*search1;
 	t_list	*newtube;
 
-	if(room != ((t_room*)data->st_en_st->head->content)->out &&
+	if (room != ((t_room*)data->st_en_st->head->content)->out &&
 		room != ((t_room*)data->st_en_st->tail->content)->out)
 	{
 		search_tube(room, &search, &search1);
@@ -71,7 +71,7 @@ static void	homecoming(t_lemin *data)
 	((t_room*)data->st_en_st->head->content)->c_o = NULL;
 }
 
-static void	build_map(t_lemin *data)
+void		build_map(t_lemin *data)
 {
 	t_list	*work;
 	t_room	*work1;
@@ -95,7 +95,7 @@ static void	build_map(t_lemin *data)
 
 int			suurballe(t_lemin *data)
 {
-	int work;
+	int	work;
 
 	deikstra(data);
 	if (((t_room*)data->st_en_st->tail->content)->in->parent == NULL)
@@ -108,20 +108,16 @@ int			suurballe(t_lemin *data)
 	data->ceiling = data->sum_dist + data->ants;
 	while (((t_room*)data->st_en_st->tail->content)->in->parent != NULL)
 	{
-		build_map(data);
-		deikstra(data);
-		work = data->sum_dist +
-		((t_room*)data->st_en_st->tail->content)->in->distance - 1 + data->ants;
-		work = (work % (data->trails + 1)) == 0 ? work / (data->trails + 1) :
-				(work / (data->trails + 1)) + 1;
+		ne_pomestilos_v_suurbale(data, &work);
 		if (data->ceiling >= work)
 		{
 			data->ceiling = work;
 			data->trails++;
-			data->sum_dist += ((t_room*)data->st_en_st->tail->content)->out->distance - 1;
+			data->sum_dist += ((t_room*)data->st_en_st->tail->content)->out->
+					distance - 1;
 		}
 		else
-			break;
+			break ;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:56:58 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/23 08:56:02 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/23 11:06:38 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ void		read_map(t_lemin *data);
 void		room_parser(t_lemin *data, int *mode, int str_t);
 
 void		deikstra(t_lemin *data);
+void		ne_pomestilos_v_suurbale(t_lemin *data, int *work);
 
 int			suurballe(t_lemin *data);
+void		build_map(t_lemin *data);
 #endif
