@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:56:58 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/20 07:03:28 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/23 03:01:37 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,6 @@ int			is_valid(char *str);
 
 void		read_map(t_lemin *data);
 void		room_parser(t_lemin *data, int *mode, int str_t);
+
+void		deikstra(t_lemin *data);
 #endif

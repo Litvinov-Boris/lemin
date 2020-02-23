@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   suurballe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/31 03:57:57 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/23 03:05:43 by svivienn         ###   ########.fr       */
+/*   Created: 2020/02/23 05:26:08 by svivienn          #+#    #+#             */
+/*   Updated: 2020/02/23 05:52:31 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 
-int	main(void)
+int	suurballe(t_lemin *data)
 {
-	t_lemin	*data;
-
-	data = init_lemin();
-	fd = open("./test1", O_RDONLY);
-	read_map(data);
 	deikstra(data);
-	/*print_input(data);
-	printf("\n%i\n", data->ants);*/
-	print_rooms(data);
-	close(fd);
-	exit(0);
+	if (((t_room*)data->st_en_st->tail->content)->in->parent == NULL)
+		error();
+	if (((t_room*)data->st_en_st->tail->content)->in->parent ==
+	((t_room*)data->st_en_st->head->content)->out)
+		return (1);
+	
 }
