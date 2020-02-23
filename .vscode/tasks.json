@@ -16,7 +16,8 @@
                 "./src/tools.c",
                 "./src/is_valid.c",
                 "./src/read_map.c",
-                "./src/tools_for_alg.c",
+                "./src/deikstra.c",
+                "./src/suurballe.c",
                 "./libft/libft.a",
                 "-I./inc",
                 "-I./libft"

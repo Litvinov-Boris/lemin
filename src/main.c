@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:57:57 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/23 03:05:43 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/23 09:13:21 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	main(void)
 	data = init_lemin();
 	fd = open("./test1", O_RDONLY);
 	read_map(data);
-	deikstra(data);
+	suurballe(data);
+	//suurballe(data);
 	/*print_input(data);
 	printf("\n%i\n", data->ants);*/
 	print_rooms(data);

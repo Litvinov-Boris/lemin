@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:56:58 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/23 03:01:37 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/23 08:56:02 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ struct			s_lemin
 	int			ants;
 	t_lst		*rooms;
 	t_lst		*st_en_st;
+	int			trails;
+	int			sum_dist;
+	int			ceiling;
 };
 
 struct			s_room
@@ -104,4 +107,6 @@ void		read_map(t_lemin *data);
 void		room_parser(t_lemin *data, int *mode, int str_t);
 
 void		deikstra(t_lemin *data);
+
+int			suurballe(t_lemin *data);
 #endif
