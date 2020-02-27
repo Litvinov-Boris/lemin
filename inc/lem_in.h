@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:56:58 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/27 13:56:58 by boris            ###   ########.fr       */
+/*   Updated: 2020/02/27 16:09:01 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void		read_map(t_lemin *data);
 void		room_parser(t_lemin *data, int *mode, int str_t);
 
 void		deikstra(t_lemin *data);
-void		ne_pomestilos_v_suurbale(t_lemin *data, int *work);
+int			ne_pomestilos_v_suurbale(t_lemin *data);
 
 int			suurballe(t_lemin *data);
 void		build_map(t_lemin *data);

@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:00:08 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/20 07:29:31 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/27 16:03:02 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_lemin			*init_lemin(void)
 	data->input = init_list();
 	data->rooms = init_list();
 	data->st_en_st = init_list();
+	data->ceiling = INT_MAX;
 	return (data);
 }
 

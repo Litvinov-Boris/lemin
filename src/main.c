@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:57:57 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/27 11:22:46 by boris            ###   ########.fr       */
+/*   Updated: 2020/02/27 16:09:12 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ int	main(void)
 	t_lemin	*data;
 
 	data = init_lemin();
-	fd = open("./test", O_RDONLY);
+	fd = open("./test1", O_RDONLY);
 	read_map(data);
 	suurballe(data);
+	printf("%i, %i", data->ceiling, data->sum_dist);
 	//suurballe(data);
 	/*print_input(data);
 	printf("\n%i\n", data->ants);*/

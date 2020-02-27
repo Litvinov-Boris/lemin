@@ -8,9 +8,7 @@
             "type": "shell",
             "command": "gcc",
             "args": [
-                "-Wall",
-                "-Wextra",
-                "-Werror",
+                "-g",
                 "./src/main.c",
                 "./src/print.c",
                 "./src/read_and_save.c",

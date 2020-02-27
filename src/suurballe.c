@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   suurballe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
+/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 05:26:08 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/27 11:11:03 by boris            ###   ########.fr       */
+/*   Updated: 2020/02/27 16:12:24 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,28 +93,15 @@ void		build_map(t_lemin *data)
 
 int			suurballe(t_lemin *data)
 {
-	int	work;
-
 	deikstra(data);
 	if (((t_room*)data->st_en_st->tail->content)->in->parent == NULL)
 		error();
 	if (((t_room*)data->st_en_st->tail->content)->in->parent ==
 	((t_room*)data->st_en_st->head->content)->out)
 		return (1);
-	data->trails = 1;
-	data->sum_dist = ((t_room*)data->st_en_st->tail->content)->in->distance - 1;
-	data->ceiling = data->sum_dist + data->ants;
 	while (((t_room*)data->st_en_st->tail->content)->in->parent != NULL)
 	{
-		ne_pomestilos_v_suurbale(data, &work);
-		if (data->ceiling >= work)
-		{
-			data->ceiling = work;
-			data->trails++;
-			data->sum_dist += ((t_room*)data->st_en_st->tail->content)->out->
-					distance - 1;
-		}
-		else
+		if (ne_pomestilos_v_suurbale(data) == 1)
 			break ;
 	}
 	return (0);
