@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:22:22 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/23 09:06:28 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:56:38 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	print_input(t_lemin *data)
 void	print_rooms(t_lemin *data)
 {
 	t_list *work;
-	t_list	*work1;
-
+	
 	work = data->rooms->head;
 	while (work != NULL)
 	{
@@ -41,4 +40,32 @@ void	print_rooms(t_lemin *data)
 		printf("\n\n");
 		work = work->next;
 	}
+}
+
+void	printlink(t_lemin *data)
+{
+	t_list	*work;
+	t_list	*work1;
+	work = data->rooms->head;
+	while (work != NULL)
+	{
+		printf("%s:\n", ((t_room*)work->content)->name);
+		work1 = ((t_room*)work->content)->in->links->head;
+		printf("in: ");
+		while (work1 !=NULL)
+		{
+			printf("%s/%i, ", ((t_tube*)work1->content)->link->master->name, ((t_tube*)work1->content)->link->type);
+			work1 = work1->next;
+		}
+		printf("\nout: ");
+		work1 = ((t_room*)work->content)->out->links->head;
+		while (work1 !=NULL)
+		{
+			printf("%s/%i, ", ((t_tube*)work1->content)->link->master->name, ((t_tube*)work1->content)->link->type);
+			work1 = work1->next;
+		}
+		printf("\n");
+		work = work->next;
+	}
+	printf ("_______________________________________\n");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:56:58 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/23 11:06:38 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:56:58 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void		lstadd_tail(t_lst *lst, t_list *list);
 
 void		print_input(t_lemin *data);
 void		print_rooms(t_lemin *data);
+void		printlink(t_lemin *data);
 
 int			is_valid(char *str);
 

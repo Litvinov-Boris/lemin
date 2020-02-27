@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:57:57 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/23 09:13:21 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/27 11:22:46 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	t_lemin	*data;
 
 	data = init_lemin();
-	fd = open("./test1", O_RDONLY);
+	fd = open("./test", O_RDONLY);
 	read_map(data);
 	suurballe(data);
 	//suurballe(data);

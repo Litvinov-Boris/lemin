@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   suurballe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 05:26:08 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/23 11:04:44 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/27 11:11:03 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,21 @@ static void	tube_turn(t_lemin *data, t_subroom *room)
 {
 	t_list	*search;
 	t_list	*search1;
-	t_list	*newtube;
 
 	if (room != ((t_room*)data->st_en_st->head->content)->out &&
 		room != ((t_room*)data->st_en_st->tail->content)->out)
 	{
 		search_tube(room, &search, &search1);
-		if (((t_tube*)search->content)->turn == 0)
-		{
-			if (search1 == NULL)
-				room->parent->links->head = search->next;
-			else
-				search1->next = search->next;
-			((t_tube*)search->content)->turn = 1;
-			((t_tube*)search->content)->weight *= -1;
-			((t_tube*)search->content)->link = room->parent;
-			lstadd_tail(room->links, search);
-		}
+		if (search1 == NULL)
+			room->parent->links->head = search->next;
+		else
+			search1->next = search->next;
+		if (room->parent->links->head == NULL)
+			room->parent->links->tail = NULL;
+		((t_tube*)search->content)->weight *= -1;
+		((t_tube*)search->content)->link = room->parent;
+		search->next = NULL;
+		ft_lstadd(&room->links->head, search);
 	}
 }
 
