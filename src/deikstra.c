@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/23 02:02:45 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/27 16:08:59 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/27 16:59:46 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ void				deikstra(t_lemin *data)
 	}
 }
 
-int				ne_pomestilos_v_suurbale(t_lemin *data)
+int					ne_pomestilos_v_suurbale(t_lemin *data)
 {
 	int	work;
-	
+
 	work = data->sum_dist +
 	((t_room*)data->st_en_st->tail->content)->in->distance - 1 + data->ants;
 	work = (work % (data->trails + 1)) == 0 ? work / (data->trails + 1) :
@@ -104,7 +104,7 @@ int				ne_pomestilos_v_suurbale(t_lemin *data)
 				distance - 1;
 	}
 	else
-		return(1);
+		return (1);
 	build_map(data);
 	deikstra(data);
 	return (0);

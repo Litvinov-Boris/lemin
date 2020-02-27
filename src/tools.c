@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:14:29 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/23 11:06:47 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/27 17:05:31 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,19 @@ int		tube_replay(t_list *list, t_room *room)
 		work = work->next;
 	}
 	return (0);
+}
+
+void	tube_pars1(t_room **room1, t_room **room2, t_lemin *data)
+{
+	char	**split;
+
+	if (!(split = ft_strsplit(data->input->tail->content, '-')))
+		error();
+	*room1 = search_room(data, split[0]);
+	*room2 = search_room(data, split[1]);
+	if (!(*room1) || !(*room2) || *room1 == *room2)
+		error();
+	free(split[0]);
+	free(split[1]);
+	free(split);
 }

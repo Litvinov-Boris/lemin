@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 05:26:46 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/20 07:21:20 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/27 17:07:14 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	start_and_parser(t_lemin *data, int str_t)
 
 static void	tube_parser(int str_t, t_lemin *data)
 {
-	char	**split;
 	t_room	*room1;
 	t_room	*room2;
 	t_list	*tube;
@@ -50,18 +49,13 @@ static void	tube_parser(int str_t, t_lemin *data)
 
 	if (str_t != TUBE)
 		error();
-	split = ft_strsplit(data->input->tail->content, '-');
-	if (!(room1 = search_room(data, split[0])) ||
-		!(room2 = search_room(data, split[1])) || room1 == room2)
-		error();
-	free(split[0]);
-	free(split[1]);
-	free(split);
+	tube_pars1(&room1, &room2, data);
 	if (tube_replay(room1->out->links->head, room2) ||
 							tube_replay(room2->out->links->head, room1))
 		error();
-	if (!(tube = ft_lstnew(0, 0)) ||
-			!(tube2 = ft_lstnew(0, 0)))
+	tube = ft_lstnew(0, 0);
+	tube2 = ft_lstnew(0, 0);
+	if (!tube || !tube2)
 		error();
 	tube->content = init_tube(room2->in, 1);
 	tube2->content = init_tube(room1->in, 1);

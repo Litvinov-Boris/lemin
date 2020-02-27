@@ -8,6 +8,8 @@
             "type": "shell",
             "command": "gcc",
             "args": [
+                "-Wall", 
+                "-Wextra",
                 "-g",
                 "./src/main.c",
                 "./src/print.c",
