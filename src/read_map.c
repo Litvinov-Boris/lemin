@@ -6,7 +6,7 @@
 /*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 05:26:46 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/27 17:07:14 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/02/28 20:20:51 by svivienn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	ants_parser(t_lemin *data, int *mode, int str_t)
 	else
 	{
 		data->ants = ft_atoi(data->input->tail->content);
+		if (data->ants <= 0)
+			error();
 		*mode = ROOM;
 	}
 }
