@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 05:26:46 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/28 20:20:51 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/03/02 06:35:42 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ static void	start_and_parser(t_lemin *data, int str_t)
 	if (!(read_n_save(data)))
 		error();
 	str_t1 = is_valid(data->input->tail->content);
+	while (str_t1 == COMENT)
+	{
+		if (!(read_n_save(data)))
+			error();
+		str_t1 = is_valid(data->input->tail->content);
+	}
 	if (str_t1 == ROOM)
 		room_parser(data, &str_t1, str_t1);
 	else
@@ -68,15 +74,12 @@ static void	tube_parser(int str_t, t_lemin *data)
 void		room_parser(t_lemin *data, int *mode, int str_t)
 {
 	t_list	*work;
-	char	**split;
 
 	if (str_t == ROOM)
 	{
 		if (!(work = ft_lstnew(0, 0)))
 			error();
-		if (!(split = ft_strsplit(data->input->tail->content, ' ')))
-			error();
-		work->content = init_room(&split);
+		work->content = init_room(data);
 		if (room_replay((data->rooms->head), work->content))
 			error();
 		lstadd_tail(data->rooms, work);

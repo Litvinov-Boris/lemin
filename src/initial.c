@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initial.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:00:08 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/27 16:03:02 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/03/02 06:58:32 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,32 @@ t_lemin			*init_lemin(void)
 	return (data);
 }
 
-t_room			*init_room(char ***str)
+t_room			*init_room(t_lemin *data)
 {
 	t_room	*room;
 	t_list	*work;
+	char	*s1;
+	int		i;
 
 	if (!(room = (t_room*)malloc(sizeof(t_room))))
 		error();
 	ft_bzero(room, sizeof(t_room));
-	room->name = (*str)[0];
+	i = ft_countwords(data->input->tail->content, ' ') - 2;
+	s1 = ft_strchr(data->input->tail->content, ' ');
+	while (--i > 0)
+		s1 = ft_strchr(s1 + 1, ' ');
+	i = s1 - (char*)(data->input->tail->content);
+	if (!(room->name = (char*)malloc(sizeof(char) * (i + 1))))
+		error();
+	ft_strncpy(room->name, data->input->tail->content, i);
+	room->x = ft_atoi(s1);
+	room->y = ft_atoi(ft_strchr(s1, ' '));
 	room->in = init_subroom(IN, room);
 	room->out = init_subroom(OUT, room);
-	room->x = ft_atoi((*str)[1]);
-	room->y = ft_atoi((*str)[2]);
 	if (!(work = ft_lstnew(0, 0)))
 		error();
 	work->content = init_tube(room->out, 0);
 	lstadd_tail(room->in->links, work);
-	free((*str)[1]);
-	free((*str)[2]);
-	free(*str);
 	return (room);
 }
 

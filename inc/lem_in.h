@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 03:56:58 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/27 17:05:29 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/03/02 06:35:38 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ struct			s_subroom
 int	fd;
 
 t_lemin		*init_lemin();
-t_room		*init_room(char ***str);
+t_room		*init_room(t_lemin *data);
 t_subroom	*init_subroom(char type, t_room *master);
 t_tube		*init_tube(t_subroom *link, int weight);
 

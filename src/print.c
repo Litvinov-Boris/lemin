@@ -6,7 +6,7 @@
 /*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 04:22:22 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/27 13:56:38 by boris            ###   ########.fr       */
+/*   Updated: 2020/03/02 06:55:49 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	print_rooms(t_lemin *data)
 	while (work != NULL)
 	{
 		printf ("%s\n", ((t_room*)work->content)->name);
-		if (((t_room*)work->content)->p_o != NULL)
-			printf ("po - %s", ((t_room*)work->content)->p_o->name);
-		if (((t_room*)work->content)->c_o != NULL)
-			printf (", co - %s", ((t_room*)work->content)->c_o->name);
-		printf("\n\n");
+		//if (((t_room*)work->content)->p_o != NULL)
+		//	printf ("po - %s", ((t_room*)work->content)->p_o->name);
+		//if (((t_room*)work->content)->c_o != NULL)
+		//	printf (", co - %s", ((t_room*)work->content)->c_o->name);
+		//printf("\n\n");
 		work = work->next;
 	}
 }

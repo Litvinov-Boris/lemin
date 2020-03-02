@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: svivienn <svivienn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: boris <boris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/31 05:28:37 by svivienn          #+#    #+#             */
-/*   Updated: 2020/02/19 03:00:07 by svivienn         ###   ########.fr       */
+/*   Updated: 2020/03/02 07:01:28 by boris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,32 +38,34 @@ static int	is_ants(char *str)
 
 static int	is_room(char *str)
 {
-	if (ft_countwords(str, ' ') == 3)
+	char	*s1;
+
+	if (*str != 'L' && *str != '#')
 	{
-		if (*str != 'L' && *str != '#')
+		s1 = str + ft_strlen(str) - 1;
+		while (*s1 != ' ')
 		{
-			while (*str != ' ')
-			{
-				if (*str == '-')
-					return (0);
-				str++;
-			}
-			while (*str != '\0')
-			{
-				if (!(ft_isdigit(*str)) && *str != ' ')
-					return (0);
-				str++;
-			}
-			return (1);
+			if (!(ft_isdigit(*s1)))
+				return (0);
+			s1--;
 		}
+		while (*(--s1) != ' ')
+			if (!(ft_isdigit(*s1)))
+				return (0);
+		while (str != s1)
+		{
+			if (*str == '-' || !(ft_isprint(*str)))
+				return (0);
+			str++;
+		}
+		return (1);
 	}
 	return (0);
 }
 
 static int	is_tube(char *str)
 {
-	return ((ft_countwords(str, ' ') == 1 && ft_countwords(str, '-') == 2) ?
-				1 : 0);
+	return (ft_countwords(str, '-') == 2) ? 1 : 0;
 }
 
 int			is_valid(char *str)
